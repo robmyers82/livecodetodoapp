@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+    <head>
+        <title>UIT Chat App Skeleton</title>
+
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <!-- Your custom CSS -->
+        <link rel='stylesheet' type='text/css' href='css/style.css'>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 page-header">
+                    <h1>Live Code Sample To-do App<br><small>Using Javascript, jQuery and Firebase</small></h1>
+                </div>
+            </div>
+
+            <!-- Login button window -->
+            <div class="row login-window">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <button type="button" id="btn-login" class="btn btn-lg btn-block btn-primary">
+                        Login
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main todo window -->
+            <div class="row main-window" style="display:none;">
+                <div class="col-sm-12">
+                    <p>Add your to-do below, or check off the to-do you just completed!</p>
+                </div>
+
+                <div class="row todo-list">
+                    <div class="col-sm-12">
+                        <p>No todos yet!</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-sm-offset-4">
+                    <button type="button" id="btn-add-todo-window" class="btn btn-lg btn-block btn-info">
+                        Add a Todo
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="add-modal" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>New Todo:</label>
+                        <input type="text" id="new-todo-text" class="form-control input-lg">
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button id="btn-add-todo" class="btn btn-success">
+                    Add
+                </button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- FIREBASE -->
+        <script src='https://www.gstatic.com/firebasejs/3.1.0/firebase.js'></script>
+
+        <!-- JQUERY -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <!-- BOOTSTRAP JS (for modal an other functions!) -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-modal.min.js"></script>
+
+        <!-- Your main JS Script -->
+        <script src="js/app.js"></script>
+    </body>
+</html>
