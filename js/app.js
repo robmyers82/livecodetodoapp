@@ -73,29 +73,38 @@ $(document).ready(function() {
 				todoRef.on('value', function(snapshot) {
 
 					var snapshotValue = snapshot.val();
-					var keys = Object.keys(snapshotValue);
-
-					// populate the div with the class 'todo-list'
-					$(".todo-list").html("");
-					for (var i = 0; i < keys.length; i++) {
-						$(".todo-list").append(`
-							<div class="col-sm-2">
-								<input class="todo-done" type="checkbox" data-id="${keys[i]}">
-							</div>
-							<div class="col-sm-10">
-								${snapshotValue[keys[i]]}
+					if (snapshotValue == undefined || snapshotValue == null) {
+						$(".todo-list").html(`
+							<div class="col-sm-12">
+								No todos!
 							</div>
 						`);
 					}
+					else {
+						var keys = Object.keys(snapshotValue);
 
-					// complete a to-do, listens on the checkbox
-					$(".todo-done").click(function() {
-						var deleteID = $(this).data("id");
-						var delTodoRef = database.ref('/todos/'+loggedUser.id+'/'+deleteID);
+						// populate the div with the class 'todo-list'
+						$(".todo-list").html("");
+						for (var i = 0; i < keys.length; i++) {
+							$(".todo-list").append(`
+								<div class="col-sm-2">
+									<input class="todo-done" type="checkbox" data-id="${keys[i]}">
+								</div>
+								<div class="col-sm-10">
+									${snapshotValue[keys[i]]}
+								</div>
+							`);
+						}
 
-						delTodoRef.remove();
+						// complete a to-do, listens on the checkbox
+						$(".todo-done").click(function() {
+							var deleteID = $(this).data("id");
+							var delTodoRef = database.ref('/todos/'+loggedUser.id+'/'+deleteID);
 
-					});
+							delTodoRef.remove();
+
+						});
+					}
 				});
 			});
 
