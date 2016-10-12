@@ -69,7 +69,7 @@ $(document).ready(function() {
 				}
 
 				// listen for todos and update on the fly
-				var todoRef = database.ref('/todos/'+loggedUser.id);
+				var todoRef = database.ref('/todos');
 				todoRef.on('value', function(snapshot) {
 
 					var snapshotValue = snapshot.val();
@@ -99,7 +99,7 @@ $(document).ready(function() {
 						// complete a to-do, listens on the checkbox
 						$(".todo-done").click(function() {
 							var deleteID = $(this).data("id");
-							var delTodoRef = database.ref('/todos/'+loggedUser.id+'/'+deleteID);
+							var delTodoRef = database.ref('/todos/'+deleteID);
 
 							delTodoRef.remove();
 
@@ -122,7 +122,7 @@ $(document).ready(function() {
 	// actually adds the todo
 	$("#btn-add-todo").click(function() {
 
-		var todoRef = database.ref('/todos/'+loggedUser.id);
+		var todoRef = database.ref('/todos');
 
 		// make sure the new todo isn't blank
 		if ($("#new-todo-text").val() != "") {
