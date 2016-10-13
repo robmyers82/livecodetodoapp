@@ -133,6 +133,16 @@ $(document).ready(function() {
 			$("#add-modal").modal('hide');
 		}
 	});
+
+	$("#btn-logout").click(function() {
+
+		auth.signOut().then(function() {
+			$(".login-window").show();
+			$(".main-window").hide();
+		}, function(error) {
+		  	alert("Oops!  Couldn't log you out.  Here's why: "+error);
+		});
+	});
 });
 
 
