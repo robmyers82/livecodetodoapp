@@ -29,6 +29,10 @@
 
             <!-- Main todo window -->
             <div class="row main-window" style="display:none;">
+                <div id="sidebar" data-toggle="expand">
+
+                </div>
+
                 <div class="col-sm-12">
                     <p>Add your to-do below, or check off the to-do you just completed!</p>
                 </div>
@@ -47,33 +51,30 @@
                     <button type="button" id="btn-logout" class="btn btn-lg btn-block btn-danger">
                         Logout
                     </button>
+
+                    <button type="button" id="btn-expand" class="btn btn-lg btn-block btn-info">
+                        Expand/Collapse
+                    </button>
                 </div>
             </div>
-        </div>
 
-        <div id="add-modal" class="modal fade" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label>New Todo:</label>
-                        <input type="text" id="new-todo-text" class="form-control input-lg">
+            <div class="row new-todo-window" style="display:none;">
+                <div class="header">
+                    <h4 class="title">Modal title</h4>
+                  </div>
+                  <div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label>New Todo:</label>
+                            <input type="text" id="new-todo-text" class="form-control input-lg">
+                        </div>
+                        <button id="btn-add-todo" class="btn btn-success">
+                            Add
+                        </button>
                     </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button id="btn-add-todo" class="btn btn-success">
-                    Add
-                </button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                  </div>
+            </div>
+        </div>
 
         <!-- FIREBASE -->
         <script src='https://www.gstatic.com/firebasejs/3.1.0/firebase.js'></script>

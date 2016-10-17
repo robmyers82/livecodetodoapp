@@ -69,7 +69,7 @@ $(document).ready(function() {
 				}
 
 				// listen for todos and update on the fly
-				var todoRef = database.ref('/todos');
+				var todoRef = database.ref('/todos').child(loggedUser.id);
 				todoRef.on('value', function(snapshot) {
 
 					var snapshotValue = snapshot.val();
@@ -99,7 +99,7 @@ $(document).ready(function() {
 						// complete a to-do, listens on the checkbox
 						$(".todo-done").click(function() {
 							var deleteID = $(this).data("id");
-							var delTodoRef = database.ref('/todos/'+deleteID);
+							var delTodoRef = database.ref('/todos/'+loggedUser.id+'/'+deleteID);
 
 							delTodoRef.remove();
 
@@ -116,7 +116,8 @@ $(document).ready(function() {
 
 	// opens a modal to add a new todo
 	$("#btn-add-todo-window").click(function() {
-		$("#add-modal").modal();
+		$(".main-window").hide();
+		$(".new-todo-window").show();
 	});
 
 	// actually adds the todo
@@ -128,9 +129,10 @@ $(document).ready(function() {
 		if ($("#new-todo-text").val() != "") {
 
 			// add the todo and update the values. finally close the modal
-			todoRef.push($("#new-todo-text").val());
+			todoRef.child(loggedUser.id).push($("#new-todo-text").val());
 			$("#new-todo-text").val("");
-			$("#add-modal").modal('hide');
+			$(".main-window").show();
+			$(".new-todo-window").hide();
 		}
 	});
 
@@ -142,6 +144,31 @@ $(document).ready(function() {
 		}, function(error) {
 		  	alert("Oops!  Couldn't log you out.  Here's why: "+error);
 		});
+	});
+
+	$("#btn-expand").click(function() {
+
+		// check the state of the sidebar's data-toggle
+		if ($("#sidebar").data('toggle') == "expand") {
+
+			// it's expanded, collapse it
+			$("#sidebar").data('toggle', 'collapse');
+			$("#sidebar").animate({
+				width: "-=200px"
+			}, 500, function() {
+				
+			});
+		}
+		else {
+
+			// it's collapsed, expand it
+			$("#sidebar").data('toggle', 'expand');
+			$("#sidebar").animate({
+				width: "+=200px"
+			}, 500, function() {
+				
+			});
+		}
 	});
 });
 

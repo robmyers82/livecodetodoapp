@@ -1,3 +1,13 @@
 /*
 	Enter your app's CSS code here!
 */
+
+#sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 200px;
+	z-index: 10;
+	background-color: #F0F;
+}
